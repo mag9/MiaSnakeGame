@@ -78,6 +78,8 @@ int main(void){
 
 	while (getch() != 'q');
 
+	
+
     endwin();
 
    
