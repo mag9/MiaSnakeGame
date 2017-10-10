@@ -1,16 +1,12 @@
-
-
 #include <stdio.h>
 #include "CursesSetup.h"
+#include <math.h>
 
-
-int main(void){
-
-    
+int main(void)
+{
 	char userName[100];		
 	int intVar = 0;			
-	char input_ch = 0;		
-    
+	char input_ch = 0;    
 	
 	printf("Please enter your name: ");
 	scanf("%s", &userName[0]);
@@ -46,8 +42,6 @@ int main(void){
 	mvprintw(21, 1, "                                                                  $$ $$");
 	mvprintw(22, 1, "                                                                   $ $");
 
-	  
-
 	mvprintw(0, 0, "###############################################################################");
 	while (wall_counter < 59)
 	{
@@ -77,11 +71,7 @@ int main(void){
 	}
 
 	while (getch() != 'q');
+	endwin();
 
-	
-
-    endwin();
-
-   
-    return 0;
+	return 0;
 }

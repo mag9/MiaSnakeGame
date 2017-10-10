@@ -3,12 +3,10 @@
 #include "CursesSetup.h"
 #include <math.h>
 
-#include "SnakeGame.c"
-
 #define MAX_ROWS 40
 #define SCALING_FACTOR 100
 
-int main(void) {
+void game() {
 
 	//Local declarations
 	char userInput;
