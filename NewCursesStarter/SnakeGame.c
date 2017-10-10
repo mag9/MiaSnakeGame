@@ -109,12 +109,27 @@ void playGame() {
 		//Get the user input
 		userInput = getch();
 
+		//Pressed boolean
+		int pressed = 0;
+
 		//create and draw character
 		mvprintw(charY, charX, "*");
+		refresh();
 
 		//TODO - some more stuff to handle user input here
 		if (userInput == 'w') {
-			charY--;
+			pressed = 1;
+			while (pressed == 1) {
+				clear();
+				charY--;
+				mvprintw(charY, charX, "*");
+				refresh();
+				Sleep(500);
+					if(charY == 80 || charY == 0){
+						charY = 5;
+						pressed = 0;
+					}
+			}
 		}
 		else if (userInput == 'a') {
 			charX--;
@@ -131,12 +146,10 @@ void playGame() {
 			endwin();
 		}
 
-		//Make sure the screen updates
-		refresh();
-
 		//Sleep
-		sleep_crossPlatform(50);
+		//sleep_crossPlatform(50);
 	}
 
+	clear();
 	return 0;
 }

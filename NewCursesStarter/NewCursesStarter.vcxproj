@@ -143,7 +143,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CursesSetup.c" />
-    <ClCompile Include="Game.c" />
     <ClCompile Include="SnakeGame.c" />
   </ItemGroup>
   <ItemGroup>
