@@ -91,8 +91,8 @@ void playGame() {
 
 	//Local declarations
 	char userInput = 'x';
-	int charX;
-	int charY;
+	int charX = 35;
+	int charY = 35;
 
 	//General setup and clear curse window
 	SetupAndClearCursesWindow();
@@ -104,13 +104,13 @@ void playGame() {
 		clear();
 
 		//Display the default info
-		mvprintw(0, 1, "Press Q to exit");
-
-		//Make sure the screen updates
-		refresh();
+		mvprintw(3, 30, "Press Q to exit to menu");
 
 		//Get the user input
 		userInput = getch();
+
+		//create and draw character
+		mvprintw(charY, charX, "*");
 
 		//TODO - some more stuff to handle user input here
 		if (userInput == 'w') {
@@ -130,6 +130,9 @@ void playGame() {
 		{
 			endwin();
 		}
+
+		//Make sure the screen updates
+		refresh();
 
 		//Sleep
 		sleep_crossPlatform(50);
