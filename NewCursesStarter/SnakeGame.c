@@ -126,13 +126,34 @@ void playGame() {
 				refresh();
 				Sleep(500);
 					if(charY == 80 || charY == 0){
-						charY = 5;
-						pressed = 0;
+						while (pressed == 1) {
+							clear();
+							charY++;
+							mvprintw(charY, charX, "*");
+							refresh();
+							Sleep(500);
+						}
 					}
 			}
 		}
 		else if (userInput == 'a') {
-			charX--;
+			pressed = 1;
+			while (pressed == 1) {
+				clear();
+				charX--;
+				mvprintw(charY, charX, "*");
+				refresh();
+				Sleep(500);
+				if (charX == 60 || charX == 0) {
+					while (pressed == 1) {
+						clear();
+						charX++;
+						mvprintw(charY, charX, "*");
+						refresh();
+						Sleep(500);
+					}
+				}
+			}
 		}
 		else if (userInput == 's') {
 			charY++;
