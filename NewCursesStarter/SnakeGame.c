@@ -7,6 +7,7 @@ int main(void)
 	char userName[100];
 	int intVar = 0;
 	int menu = 0;
+	int game = 0;
 	int test = 0;
 	int x;
 	int snakeRow = 15;
@@ -18,16 +19,16 @@ int main(void)
 
 	printf("Please enter your name: ");
 	scanf("%s", &userName[0]);
-	do {
+	
 		SetupAndClearCursesWindow();
 
 		int x_cord = 0, y_cord = 0, wall_counter = 0;
 
 		menu = 1;
+		game = 1;
 
 	SPLASH_SCREEN: while (getch() != 'q' && menu == 1)
-
-
+	{
 		mvprintw(60, 40, "Press Q to exit");
 				   mvprintw(3, 30, "Welcome, %s.", userName);
 				   mvprintw(4, 31, "Let's Play.");
@@ -83,12 +84,22 @@ int main(void)
 					   wall_counter3++;
 
 				   }
+
+				   if (getch() == 'p')
+				   {
+					   clear();
+					   goto GAME;
+				   }
+				   
+				   if (getch() == 'q')
+				   {
+					   endwin();
+					   return 0;
+				   }
 	}
 
-	while (getch() != 'p');
+	GAME: while (game == 1)
 	{
-
-
 		//Set the variable we are using to a known good value
 		intVar = 0;
 
@@ -96,7 +107,7 @@ int main(void)
 		char a;
 		char s;
 		char d;
-		do {
+
 			//Clear the screen
 			clear();
 
@@ -137,7 +148,6 @@ int main(void)
 			{
 				direction = 'd';
 			}
-			//Don't know why this don't work
 
 			switch (direction)
 			{
@@ -170,16 +180,19 @@ int main(void)
 			rowOffset = -2;
 			}
 			*/
+
 			//Refresh what is shown on the screen
 			refresh();
+
 			//Wait a bit
 			sleep_crossPlatform(100);
-			//Increment the variable we are using to change the display location
 
-		} while (getch() != 'q');
-		endwin();
+			if (getch() == 'q')
+			{
+				clear();
+				goto SPLASH_SCREEN;
+			}
 
-	}while (getch() != 'q');
-	return 0;
+	}
 
 }
